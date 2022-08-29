@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = (m+n-1);
+        int count1=m-1;
+        int count2=n-1;
+        for(i; count1>=0 && count2 >=0; i--){
+            if(nums1[count1] > nums2[count2]){
+                nums1[i] = nums1[count1];
+                count1--;
+            }
+            else{
+                nums1[i] = nums2[count2];
+                count2--;
+            }
+        }
+        if(count1>=0){
+            for(count1; count1>=0; count1--) nums1[i--] = nums1[count1];
+        }
+        if(count2>=0){
+            for(count2; count2>=0; count2--) nums1[i--] = nums2[count2];
+        }
+   }
+};
